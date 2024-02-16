@@ -1,7 +1,9 @@
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +23,16 @@ public class RegistroUsuarioForm extends javax.swing.JFrame {
         String confirmacion_correo = txt_confirmacion_correo.getText();
         String passcode = txt_passcode.getText();
         String confirmacion_passcode = txt_confirmacion_passcode.getText();
+
+        UsuarioNuevoDTO usuarioNuevo = new UsuarioNuevoDTO();
+        usuarioNuevo.setEmail(correo);
+        usuarioNuevo.setPasscode_usuario(passcode);
+//        try {
+//
+//            this.UsuarioDAO.agregar(usuarioNuevo);
+//        } catch (ValidacionDTOException ex) {
+//            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validacion", JOptionPane.ERROR_MESSAGE);
+//        }
     }
 
     /**
