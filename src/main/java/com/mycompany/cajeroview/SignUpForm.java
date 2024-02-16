@@ -16,8 +16,18 @@ public class SignUpForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-    
-   
+
+    public void registrarCliente() {
+        String nomrbe = txt_nombres.getText();
+        String apellido_paterno = txt_apellido_paterno.getText();
+        String apellido_materno = txt_apellido_materno.getText();
+        String fecha_nacimiento = txt_fecha_nacimiento.getText();
+        int codigo_postal = Integer.parseInt(txt_codigo_postal.getText());
+        String calle = txt_calle.getText();
+        int numero_interior = Integer.parseInt(txt_numero_interior.getText());
+        int numero_exterior = Integer.parseInt(txt_numero_exterior.getText());
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
