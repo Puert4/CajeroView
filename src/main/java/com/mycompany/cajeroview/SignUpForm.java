@@ -1,8 +1,14 @@
 package com.mycompany.cajeroview;
 
 import com.mycompany.cajeropersistencia.DAOS.ClientesDAO;
+import com.mycompany.cajeropersistencia.DAOS.DomicilioDAO;
 import com.mycompany.cajeropersistencia.DAOS.IClientesDAO;
+import com.mycompany.cajeropersistencia.DAOS.IDomicilioDAO;
+import com.mycompany.cajeropersistencia.DAOS.IUsuarioDAO;
+import com.mycompany.cajeropersistencia.DAOS.UsuarioDAO;
 import com.mycompany.cajeropersistencia.DTO.ClienteNuevoDTO;
+import com.mycompany.cajeropersistencia.DTO.DomicilioNuevoDTO;
+import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
 import com.mycompany.cajeropersistencia.conexion.IConexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
@@ -14,18 +20,19 @@ import java.util.logging.Logger;
  *
  * @author TeLesheo
  */
-public class SignUpForm extends javax.swing.JDialog {
+public class SignUpForm extends javax.swing.JFrame {
 
     /**
      * Creates new form ClienteForm
      */
     private IConexion conexionBD;
 
-    public SignUpForm(java.awt.Frame parent, boolean modal, IConexion conexionBD) {
-        super(parent, modal);
+    public SignUpForm(IConexion conexionBD, UsuarioNuevoDTO usuraioNuevo) {
+
         initComponents();
 
         this.conexionBD = conexionBD;
+
     }
 
     public void registrarCliente() throws PersistenciaException {
@@ -39,15 +46,26 @@ public class SignUpForm extends javax.swing.JDialog {
         int numero_exterior = Integer.parseInt(txt_numero_exterior.getText());
 
         ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO();
+        DomicilioNuevoDTO domicilioNuevo = new DomicilioNuevoDTO();
+
         IClientesDAO clienteDAO = new ClientesDAO(conexionBD);
+        IDomicilioDAO domicilioDAO = new DomicilioDAO(conexionBD);
+        IUsuarioDAO usuarioDAO = new UsuarioDAO(conexionBD);
+
         clienteNuevo.setNombres(nomrbe);
         clienteNuevo.setApellido_paterno(apellido_paterno);
         clienteNuevo.setApellido_materno(apellido_materno);
         clienteNuevo.setFecha_nacimiento(fecha_nacimiento);
 
-        clienteDAO.agregar_cliente(clienteNuevo);
+        domicilioNuevo.setCalle(calle);
+        domicilioNuevo.setCodigo_postal(codigo_postal);
+        domicilioNuevo.setNumero_exterior(numero_exterior);
+        domicilioNuevo.setNumero_interior(numero_interior);
 
-//        ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO();
+        clienteDAO.agregar_cliente(clienteNuevo);
+        domicilioDAO.agregar(domicilioNuevo);
+
+//        usuarioDAO.agregaUsuario(usuarioNuevo);
     }
 
     /**
@@ -128,23 +146,26 @@ public class SignUpForm extends javax.swing.JDialog {
                                     .addComponent(txt_apellido_materno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_codigo_postal, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_calle, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(65, 65, 65)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(txt_numero_exterior))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(txt_numero_interior, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_codigo_postal, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(45, 45, 45)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_calle, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(65, 65, 65)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                            .addComponent(txt_numero_exterior))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(txt_numero_interior, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(36, 36, 36))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(281, 281, 281)
