@@ -1,7 +1,14 @@
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.DAOS.ClientesDAO;
+import com.mycompany.cajeropersistencia.DAOS.IClientesDAO;
+import com.mycompany.cajeropersistencia.DTO.ClienteNuevoDTO;
+import com.mycompany.cajeropersistencia.conexion.IConexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
+import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,12 +19,16 @@ public class SignUpForm extends javax.swing.JDialog {
     /**
      * Creates new form ClienteForm
      */
-    public SignUpForm(java.awt.Frame parent, boolean modal) {
+    private IConexion conexionBD;
+
+    public SignUpForm(java.awt.Frame parent, boolean modal, IConexion conexionBD) {
         super(parent, modal);
         initComponents();
+
+        this.conexionBD = conexionBD;
     }
 
-    public void registrarCliente() {
+    public void registrarCliente() throws PersistenciaException {
         String nomrbe = txt_nombres.getText();
         String apellido_paterno = txt_apellido_paterno.getText();
         String apellido_materno = txt_apellido_materno.getText();
@@ -27,6 +38,16 @@ public class SignUpForm extends javax.swing.JDialog {
         int numero_interior = Integer.parseInt(txt_numero_interior.getText());
         int numero_exterior = Integer.parseInt(txt_numero_exterior.getText());
 
+        ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO();
+        IClientesDAO clienteDAO = new ClientesDAO(conexionBD);
+        clienteNuevo.setNombres(nomrbe);
+        clienteNuevo.setApellido_paterno(apellido_paterno);
+        clienteNuevo.setApellido_materno(apellido_materno);
+        clienteNuevo.setFecha_nacimiento(fecha_nacimiento);
+
+        clienteDAO.agregar_cliente(clienteNuevo);
+
+//        ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO();
     }
 
     /**
@@ -75,6 +96,11 @@ public class SignUpForm extends javax.swing.JDialog {
         jLabel8.setText("Fecha de Naciemiento");
 
         btn_registrar.setText("Registrar");
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,6 +188,17 @@ public class SignUpForm extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        try {
+            // TODO add your handling code here: 
+            registrarCliente();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
     /**
      * @param args the command line arguments

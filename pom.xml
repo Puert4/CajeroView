@@ -8,6 +8,11 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>CajeroDominio</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>CajeroPersistencia</artifactId>
             <version>${project.version}</version>
         </dependency>
