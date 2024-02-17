@@ -1,6 +1,7 @@
 package com.mycompany.cajeroview;
 
 import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
+import com.mycompany.cajeropersistencia.conexion.IConexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
 import javax.swing.JOptionPane;
@@ -10,6 +11,9 @@ import javax.swing.JOptionPane;
  * @author TeLesheo
  */
 public class RegistroUsuarioForm extends javax.swing.JFrame {
+
+    private UsuarioNuevoDTO usuarioNuevo;
+    private IConexion conexionBD;
 
     /**
      * Creates new form RegistroUsuarioForm
@@ -27,12 +31,7 @@ public class RegistroUsuarioForm extends javax.swing.JFrame {
         UsuarioNuevoDTO usuarioNuevo = new UsuarioNuevoDTO();
         usuarioNuevo.setEmail(correo);
         usuarioNuevo.setPasscode_usuario(passcode);
-//        try {
-//
-//            this.UsuarioDAO.agregar(usuarioNuevo);
-//        } catch (ValidacionDTOException ex) {
-//            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validacion", JOptionPane.ERROR_MESSAGE);
-//        }
+
     }
 
     /**
@@ -112,6 +111,8 @@ public class RegistroUsuarioForm extends javax.swing.JFrame {
 
     private void btn_siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguienteActionPerformed
         // TODO add your handling code here:
+        SignUpForm signUpForm = new SignUpForm(conexionBD, usuarioNuevo);
+        signUpForm.setVisible(true);
     }//GEN-LAST:event_btn_siguienteActionPerformed
 
     /**

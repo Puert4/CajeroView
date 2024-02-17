@@ -15,6 +15,8 @@ import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
 import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.mycompany.cajeroview.SignUpForm;
+
 
 /**
  *
@@ -26,12 +28,14 @@ public class SignUpForm extends javax.swing.JFrame {
      * Creates new form ClienteForm
      */
     private IConexion conexionBD;
+    private UsuarioNuevoDTO usuarioNuevo;
 
-    public SignUpForm(IConexion conexionBD, UsuarioNuevoDTO usuraioNuevo) {
+    public SignUpForm(IConexion conexionBD,UsuarioNuevoDTO usuarioNuevo) {
 
         initComponents();
 
         this.conexionBD = conexionBD;
+        this.usuarioNuevo = usuarioNuevo;
 
     }
 
@@ -62,10 +66,12 @@ public class SignUpForm extends javax.swing.JFrame {
         domicilioNuevo.setNumero_exterior(numero_exterior);
         domicilioNuevo.setNumero_interior(numero_interior);
 
-        clienteDAO.agregar_cliente(clienteNuevo);
-        domicilioDAO.agregar(domicilioNuevo);
-
 //        usuarioDAO.agregaUsuario(usuarioNuevo);
+//        clienteDAO.agregar_cliente(clienteNuevo,usuarioNuevo);
+//        domicilioDAO.agregar(domicilioNuevo);
+//        
+
+       
     }
 
     /**
