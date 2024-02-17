@@ -29,72 +29,10 @@ public class CuentasForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        contenedor = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(17, 31, 77));
         setPreferredSize(new java.awt.Dimension(1350, 700));
-        getContentPane().setLayout(null);
-
-        jPanel3.setBackground(new java.awt.Color(242, 244, 247));
-        jPanel3.setLocation(new java.awt.Point(93, 177));
-        jPanel3.setSize(new java.awt.Dimension(1162, 475));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1162, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 475, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 250, 330);
-
-        contenedor.setPreferredSize(new java.awt.Dimension(1350, 700));
-        contenedor.setLayout(null);
-
-        jPanel1.setBackground(new java.awt.Color(0, 114, 179));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1350, 250));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1350, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-
-        contenedor.add(jPanel1);
-        jPanel1.setBounds(0, 0, 1350, 250);
-
-        jPanel2.setBackground(new java.awt.Color(17, 31, 77));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1350, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-        );
-
-        contenedor.add(jPanel2);
-        jPanel2.setBounds(0, 251, 1350, 590);
-
-        getContentPane().add(contenedor);
-        contenedor.setBounds(0, 0, 1350, 700);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pack();
         setLocationRelativeTo(null);
@@ -136,9 +74,5 @@ public class CuentasForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contenedor;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
