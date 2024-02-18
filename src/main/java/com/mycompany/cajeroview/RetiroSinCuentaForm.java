@@ -4,17 +4,20 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+
 /**
  *
  * @author TeLesheo
  */
-public class RetirnoSinCuentaForm extends javax.swing.JFrame {
+public class RetiroSinCuentaForm extends javax.swing.JFrame {
 
+    private Conexion conexion;
     /**
      * Creates new form RetirnoSinCuentaForm
      */
-    public RetirnoSinCuentaForm() {
-
+    public RetiroSinCuentaForm(Conexion conexion) {
+        this.conexion = conexion;
         initComponents();
     }
 
@@ -134,20 +137,20 @@ public class RetirnoSinCuentaForm extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(RetirnoSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RetiroSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(RetirnoSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RetiroSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(RetirnoSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RetiroSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(RetirnoSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(RetiroSinCuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the dialog */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                RetirnoSinCuentaForm dialog = new RetirnoSinCuentaForm(new javax.swing.JFrame(), true);
+//                RetiroSinCuentaForm dialog = new RetiroSinCuentaForm(new javax.swing.JFrame(), true);
 //                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 //                    @Override
 //                    public void windowClosing(java.awt.event.WindowEvent e) {
