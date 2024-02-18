@@ -1,5 +1,7 @@
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+
 
 /**
  *
@@ -7,11 +9,13 @@ package com.mycompany.cajeroview;
  */
 public class LogInForm extends javax.swing.JFrame {
 
+    private Conexion conexion;
     /**
      * Creates new form LogInForm
      */
-    public LogInForm() {
+    public LogInForm(Conexion conexion) {
         initComponents();
+        this.conexion = conexion;
     }
 
     public void LogIn() {
