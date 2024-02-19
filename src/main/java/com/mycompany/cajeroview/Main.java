@@ -4,16 +4,20 @@
  */
 package com.mycompany.cajeroview;
 
-import com.mycompany.cajeropersistencia.conexion.Conexion;
+import com.mycompany.cajerocontrol.Encriptacion;
 
 /**
- *
- * @author TeLesheo
+ * prueba
+ * @author asielapodaca
  */
 public class Main {
     
     public static void main (String [] args){
-        
+        Encriptacion encriptacion = new Encriptacion();
+        String contra = encriptacion.cifrado("hola");
+        System.out.println(contra);
+        contra = encriptacion.descifrado(contra);
+        System.out.println(contra);
     }
     
 }
